@@ -14,6 +14,7 @@ const app = express()
 app.use(cors())
 app.use(express.json({ limit: '2mb' }))
 
+connectDB()
 app.get('/', (req, res) => {
   res.send('API is running....')
 })
