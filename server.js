@@ -18,6 +18,12 @@ app.get('/', (req, res) => {
   res.send('API is running....')
 })
 
+// routes middleware -auto load
+readdirSync('./routes').map((r) => app.use('/api', require('./routes/' + r)))
+
+app.use(notFound)
+app.use(errorHandler)
+
 const PORT = process.env.PORT
 app.listen(PORT, console.log(`Server running at ${PORT}`.yellow.bold))
 
